@@ -8,12 +8,12 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class DownloadsPage {
+public class DownloadsPageEIP {
 
     //String downloadPath="/home/ala/Téléchargements";
     String downloadPath="C:\\Users\\abensalah\\Downloads";
 
-    public DownloadsPage(WebDriver driver) {
+    public DownloadsPageEIP(WebDriver driver) {
         PageFactory.initElements(driver,this);
     }
 

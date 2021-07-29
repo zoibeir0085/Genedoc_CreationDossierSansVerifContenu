@@ -6,11 +6,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class WelcomePage {
+public class WelcomePageEIP {
     @FindBy(how = How.LINK_TEXT, using="Nouveau dossier")
     public WebElement btnNouveauDossier;
 
-    public WelcomePage(WebDriver driver) {
+    public WelcomePageEIP(WebDriver driver) {
         PageFactory.initElements(driver,this);
 
     }

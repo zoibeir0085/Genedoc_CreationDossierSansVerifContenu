@@ -6,9 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-public class PDFPage {
+public class PDFPageEIP {
     WebDriver driver;
-    public PDFPage(WebDriver driver) {
+    public PDFPageEIP(WebDriver driver) {
         PageFactory.initElements(driver,this);
     }
     //String downloadPath="/home/ala/Téléchargements";
@@ -18,7 +18,7 @@ public class PDFPage {
         try
         {
             //Créer une instance PdfReader.
-            DownloadsPage page= new DownloadsPage(driver);
+            DownloadsPageEIP page= new DownloadsPageEIP(driver);
             System.out.println(downloadPath+"/"+page.pdfFileName());
             //PdfReader pdf = new PdfReader(downloadPath+"/"+page.pdfFileName());
             PdfReader pdf = new PdfReader(downloadPath+"\\"+page.pdfFileName());
@@ -51,7 +51,7 @@ public class PDFPage {
         try
         {
             //Créer une instance PdfReader.
-            DownloadsPage page= new DownloadsPage(driver);
+            DownloadsPageEIP page= new DownloadsPageEIP(driver);
             PdfReader pdf = new PdfReader(downloadPath+"\\"+page.pdfFileName());
             //PdfReader pdf = new PdfReader(downloadPath+"/"+page.pdfFileName());
 

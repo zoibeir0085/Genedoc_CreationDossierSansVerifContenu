@@ -10,7 +10,8 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.PageFactory;
 
-public class CreationPage {
+public class CreationPageEIP {
+	
     @FindBy(how = How.XPATH, using = "//*[@id=\"submit\"]/div/div/a")
     public WebElement btnValidation2;
 
@@ -26,7 +27,7 @@ public class CreationPage {
 
 
 
-    public CreationPage(WebDriver driver) {
+    public CreationPageEIP(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 

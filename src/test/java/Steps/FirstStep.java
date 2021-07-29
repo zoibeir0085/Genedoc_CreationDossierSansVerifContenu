@@ -60,25 +60,22 @@ public class FirstStep {
     public void iClickLoginButton() {
        // System.out.println("Click login button");
 
-        LoginPage page = new LoginPage(driver);
+        LoginPageEIP page = new LoginPageEIP(driver);
 
         page.ClickLogin();
     }
 
     @Then("I should see the welcome page")
-    public void iShouldSeeTheUserformPage() {
+    public void iShouldSeeTheUserformPage() 
+    {
         System.out.println("I should see userform");
         //Assert.assertEquals("its not displayed",driver.findElement(By.className("container body-content")).isDisplayed(),true );
-
-
         //driver.findElement(By.name("generate")).click() ;
-
-
     }
 
     @And("^I enter \"([^\"]*)\" and \"([^\"]*)\"$")
     public void iEnterUsernameAndPassword(String username, String password) throws InterruptedException {
-        LoginPage page = new LoginPage(driver);
+        LoginPageEIP page = new LoginPageEIP(driver);
         page.Login(username,password);
         Thread.sleep(2000);
     }
@@ -92,14 +89,15 @@ public class FirstStep {
 
     @Then("I navigate to the creation of new folder page")
     public void iNavigateToTheCreationOfNewFolderPage() throws InterruptedException {
-        WelcomePage page =new WelcomePage(driver);
+        WelcomePageEIP page =new WelcomePageEIP(driver);
         page.goToNouveauDossier();
         Thread.sleep(2000);
 
     }
+    
     @Then("I enter \"([^\"]*)\"  , \"([^\"]*)\", \"([^\"]*)\" and \"([^\"]*)\"")
     public void iEnterAnd(String Document, String CharteGraphique, String Redacteurs, String Approbateur) throws InterruptedException {
-        CreationPage page = new CreationPage(driver);
+        CreationPageEIP page = new CreationPageEIP(driver);
 
         //select DocumentType
         page.SelectDocument(driver,Document);
@@ -120,7 +118,7 @@ public class FirstStep {
 
     @Then("I validate")
     public void iValidate() throws InterruptedException {
-        RapportPage page = new RapportPage(driver);
+        RapportPageEIP page = new RapportPageEIP(driver);
         page.Validate();
         Thread.sleep(3000);
 
@@ -128,41 +126,36 @@ public class FirstStep {
 
     @Then("I preview")
     public void iPreview() throws InterruptedException {
-        RapportPage page = new RapportPage(driver);
-        page.Preview();
+        RapportPageEIP page = new RapportPageEIP(driver);
+        page.Preview(driver);
         Thread.sleep(3000);
 
     }
 
     @Then("I logout")
     public void iLogout() throws InterruptedException {
-        RapportPage page = new RapportPage(driver);
+        RapportPageEIP page = new RapportPageEIP(driver);
         page.Logout();
         Thread.sleep(3000);
 
     }
     @Then("I verify that the pdf was successfully downloaded")
     public void iVerifyThatThePdfWasSuccessfullyDownloaded() throws InterruptedException {
-        DownloadsPage page= new DownloadsPage(driver);
+        DownloadsPageEIP page= new DownloadsPageEIP(driver);
         page.verifyDownloadWithFileExtension(".pdf");
 
     }
 
-    @Then("I verify the no EIP")
-    public void iVerifyTheNoEIP() throws InterruptedException {
-        RapportPage page = new RapportPage(driver);
-        page.verifyNoEIP(driver);
-    }
 
     @Then("I verify the EIP")
     public void iVerifyTheEIP() throws InterruptedException {
-        RapportPage page = new RapportPage(driver);
+        RapportPageEIP page = new RapportPageEIP(driver);
         page.verifyEIP(driver);
     }
 
     @Then("I activate EIP")
     public void iActivateEIP() throws InterruptedException {
-        CreationPage page = new CreationPage(driver);
+        CreationPageEIP page = new CreationPageEIP(driver);
         page.activateEIP(driver);
 
 
@@ -170,7 +163,7 @@ public class FirstStep {
 
     @Then("I validate the form1")
     public void iValidateTheForm1() throws InterruptedException {
-        CreationPage page = new CreationPage(driver);
+        CreationPageEIP page = new CreationPageEIP(driver);
         page.Validate2();
         Thread.sleep(3000);
 
@@ -178,7 +171,7 @@ public class FirstStep {
 
     @Then("I validate the form2")
     public void iValidateTheForm2() throws InterruptedException {
-        CreationPage page = new CreationPage(driver);
+        CreationPageEIP page = new CreationPageEIP(driver);
         page.Validate3(driver);
         Thread.sleep(3000);
 
@@ -192,7 +185,7 @@ public class FirstStep {
                 "fourni de services interdits l");
         String cont3="article 5, paragraphe 1,";
         String cont5="537/2014";
-        PDFPage page= new PDFPage(driver);
+        PDFPageEIP page= new PDFPageEIP(driver);
         page.afficherPDF();
         boolean b1= page.verifyPDFContenu(cont1);
         Assert.assertTrue(b1, "Can not found : \n" +cont1);
@@ -207,27 +200,5 @@ public class FirstStep {
 
     }
 
-    @Then("I verify the contenu of the pdf non EIP")
-    public void iVerifyTheContenuOfThePdfNonEIP() {
-        String cont1=new String("Ind");
-        String cont3=new String("pendance");
 
-        String cont2=new String("avons pas \n" +
-                "fourni de services interdits par le code de d");
-        String cont4= "ontologie de la profession de commissaire \n" +
-                "aux comptes.";
-        PDFPage page= new PDFPage(driver);
-        page.afficherPDF();
-
-        boolean b1= page.verifyPDFContenu(cont1);
-        Assert.assertTrue(b1, "Can not found : \n" +cont1);
-        boolean b3= page.verifyPDFContenu(cont1);
-        Assert.assertTrue(b3, "Can not found : \n" +cont3);
-
-        boolean b2= page.verifyPDFContenu(cont2);
-        Assert.assertTrue(b2, "Can not found : \n" +cont2);
-        boolean b4= page.verifyPDFContenu(cont1);
-        Assert.assertTrue(b4, "Can not found : \n" +cont4);
-
-    }
 }

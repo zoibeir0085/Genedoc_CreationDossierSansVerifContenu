@@ -12,11 +12,12 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
-public class RapportPage {
-    @FindBy(how = How.XPATH, using = "/html/body/div[4]/div[1]/div[2]/div[1]/div[2]/img[2]")
+public class RapportPageEIP 
+{
+    //@FindBy(how = How.XPATH, using = "/html/body/div[4]/div[1]/div[2]/div[1]/div[2]/img[2]")
     public WebElement btnValidation;
 
-    @FindBy(how = How.XPATH, using = "/html/body/div[4]/div[1]/div[2]/div[1]/div[2]/div[2]/span[1]")
+   // @FindBy(how = How.XPATH, using = "/html/body/div[4]/div[1]/div[2]/div[1]/div[2]/div[2]/span[1]")
     public WebElement btnPreview;
 
     //@FindBy(how = How.XPATH, using = "/html/body/div[4]/div[1]/div[2]/div[1]/div[3]/ol/li[2]/ol/li[2]/ol/li/div")
@@ -33,50 +34,28 @@ public class RapportPage {
     @FindBy(how = How.LINK_TEXT, using="Se déconnecter")
     public WebElement btnLogout;
 
-    public RapportPage(WebDriver driver)  
+    public RapportPageEIP(WebDriver driver)  
     {
         PageFactory.initElements(driver,this);
+        
+        btnValidation=driver.findElement(By.id("progressbar")).findElement(By.xpath("img[2]")); 
+        
+        
     }
 
     public void Validate() 
     {
+    	
         btnValidation.click();
     }
 
-    public void Preview() throws InterruptedException 
+    public void Preview(WebDriver driver) throws InterruptedException 
     {
         Thread.sleep(5000);
+        btnPreview=driver.findElement(By.id("previewValidate")); 
         btnPreview.click();
     }
 
-    public void verifyNoEIP(WebDriver driver) throws InterruptedException
-    {
-        Thread.sleep(3000);
-        
-        List<WebElement> lstarticles=driver.findElements(By.className("article"));
-         
-        for (WebElement art : lstarticles) 
-        {
-        	if(art.getText().equals("Indépendance non EIP"))
-        	{
-        		 articleNoEIP=art;
-        		 articleNoEIP.click();
-        		 
-        		 articleReference=driver.findElements(By.className("droppableInput")).get(0); 
-        		 
-        	     //articleNoEIP.click();
-        	      Thread.sleep(3000);
-        	      System.out.println("article reference= "+articleReference.getText());
-        	      boolean EIP=(articleReference.getText().equals("Indépendance non EIP"));
-
-        	      //Assert.assertEquals(EIP,true,"its not displayed" );
-        	      Thread.sleep(3000);
-        	}
-		}
-        
-
-
-    }
 
     public void verifyEIP(WebDriver driver) throws InterruptedException{
        /* Thread.sleep(3000);
@@ -95,20 +74,15 @@ public class RapportPage {
          
         for (WebElement art : lstarticles) 
         {
-        	if(art.getText().equals("Indépendance EIP"))
+        	if(art.getText().equals("Ind�pendance EIP"))
         	{
         		 articleEIP=art;
         		 articleEIP.click();
         		 
-        		 articleReference=driver.findElements(By.className("droppableInput")).get(0); 
-        		 
-        	     //articleNoEIP.click();
-        	      Thread.sleep(3000);
-        	      System.out.println("article reference= "+articleReference.getText());
-        	      boolean EIP=(articleReference.getText().equals("Indépendance EIP"));
-
-        	      //Assert.assertEquals(EIP,true,"its not displayed" );
-        	      Thread.sleep(3000);
+        		 articleReference=driver.findElement(By.id("idtitles")); 
+        		 WebElement articleTitre=driver.findElement(By.id("idtitles2")); 
+          	     articleTitre.sendKeys("Ind�pendance EIP");
+          	     Thread.sleep(3000);
         	}
 		}
 

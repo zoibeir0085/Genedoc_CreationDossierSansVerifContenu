@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public class LoginPageEIP {
 
     @FindBy(how = How.ID, using="Username")
     public WebElement textUserName;
@@ -19,7 +19,7 @@ public class LoginPage {
 
 
 
-    public LoginPage(WebDriver driver) {
+    public LoginPageEIP(WebDriver driver) {
         PageFactory.initElements(driver,this);
     }
 

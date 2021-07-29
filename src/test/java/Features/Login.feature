@@ -16,6 +16,7 @@ Feature: LoginFeature
     #Then I verify the contenu of the pdf EIP
     #Then I logout
     Then I close the browser
+    
     Examples:
       | username        | password | Document                            | CharteGraphique       | Rédacteurs     | Approbateur    |
       | rgauvin@kpmg.fr | aezan75  | CAC\Rapport sur les comptes annuels V3 -- (Modèle version 1.0)  |  Rapport CAC  | BELKACEM Amine | BELKACEM Amine |
