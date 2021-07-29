@@ -23,21 +23,21 @@ Feature: LoginFeature
 
 
 
-  Scenario Outline: EIP dependency
-    Given I navigate to the login page
-    And I enter "<username>" and "<password>"
-    And I click login button
-    Then I navigate to the creation of new folder page
-    Then I enter "<Document>"  , "<CharteGraphique>", "<Rédacteurs>" and "<Approbateur>"
-    Then I activate EIP
-    Then I validate the form2
-    Then I verify the EIP
-    Then I validate
-    Then I preview
+  #Scenario Outline: EIP dependency
+    #Given I navigate to the login page
+    #And I enter "<username>" and "<password>"
+    #And I click login button
+    #Then I navigate to the creation of new folder page
+    #Then I enter "<Document>"  , "<CharteGraphique>", "<Rédacteurs>" and "<Approbateur>"
+    #Then I activate EIP
+    #Then I validate the form2
+    #Then I verify the EIP
+    #Then I validate
+    #Then I preview
     #Then I verify that the pdf was successfully downloaded
     #Then I verify the contenu of the pdf EIP
     #Then I logout
-    Then I close the browser
-    Examples:
-      | username        | password | Document                            | CharteGraphique       | Rédacteurs     | Approbateur    |
-      | rgauvin@kpmg.fr | aezan75  | CAC\Rapport sur les comptes annuels V3 -- (Modèle version 1.0)  |  Rapport CAC  | BELKACEM Amine | BELKACEM Amine |
+    #Then I close the browser
+    #Examples:
+     #| username        | password | Document                            | CharteGraphique       | Rédacteurs     | Approbateur    |
+      #| rgauvin@kpmg.fr | aezan75  | CAC\Rapport sur les comptes annuels V3 -- (Modèle version 1.0)  |  Rapport CAC  | BELKACEM Amine | BELKACEM Amine |
